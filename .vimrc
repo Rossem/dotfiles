@@ -1,3 +1,4 @@
+set shell=bash
 set nocompatible
 filetype off
 
@@ -7,16 +8,20 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
-Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-powerline'
+Plugin 'tpope/vim-endwise'
+" Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
-" Colorschemes
-Plugin 'sjl/badwolf'
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end() 
 filetype plugin indent on
+
+runtime macros/matchit.vim " match ruby ends with %
 
 syntax on
 
@@ -26,20 +31,16 @@ set noswapfile
 set nobackup 
 set nowb
 
-set ruler
-set clipboard=unnamed " use system clipboard
-set cursorline
 set number
+set clipboard=unnamed
 set showcmd
 set showmode
 set wildmenu
-set rnu
+set autoread
 set backspace=2
 set pastetoggle=<F2>
 
 " Performance
-set ttyfast
-set lazyredraw
 
 " Indentation
 set laststatus=2 "for powerline
@@ -58,10 +59,19 @@ set smartcase
 
 " ctrl-p settings
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
 
 " Colorscheme
 syntax on
-colorscheme badwolf
+set background=dark
+set t_Co=256
+colorscheme solarized
+
+" GUI Options
+set guioptions+=LlRrbT
+set guioptions-=LlRrbT
+set guifont=Monaco:h12
 
 " Leader mappings
 let mapleader = " "
@@ -69,3 +79,4 @@ let mapleader = " "
 nnoremap <leader>w <C-w>w
 nnoremap <leader>p :tabp<CR>
 nnoremap <leader>n :tabn<CR>
+nnoremap <leader>f :FZF<CR>
