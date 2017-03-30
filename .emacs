@@ -1,3 +1,4 @@
+;; Package initialization
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
@@ -5,44 +6,21 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
+;;
+;; Regular settings
+;;
 
-(ac-config-default) ;;
-(global-set-key [(control h)] 'delete-backward-char)
+;; Enable default auto-complete settings
+(ac-config-default)
 
+;; indentation
 (setq standard-indent 4)
 
-;; ========== Line by line scrolling ========== 
-
-;; This makes the buffer scroll by only a single line when the up or
-;; down cursor keys push the cursor (tool-bar-mode) outside the
-;; buffer. The standard emacs behaviour is to reposition the cursor in
-;; the center of the screen, but this can make the scrolling confusing
-
+;; line by line scrolling
 (setq scroll-step 1)
 
-;; ===== Turn off tab character =====
-
-;;
-;; Emacs normally uses both tabs and spaces to indent lines. If you
-;; prefer, all indentation can be made from spaces only. To request this,
-;; set `indent-tabs-mode' to `nil'. This is a per-buffer variable;
-;; altering the variable affects only the current buffer, but it can be
-;; disabled for all buffers.
-
-;;
-;; Use (setq ...) to set value locally to a buffer
-;; Use (setq-default ...) to set value globally 
-;;
+;; only spaces indentation
 (setq-default indent-tabs-mode nil)
-
-;; ========== Prevent Emacs from making backup files ==========
-
-(setq make-backup-files nil)
-
-;; ========== Enable Line and Column Numbering ==========
 
 ;; Show line-number in the mode line
 (line-number-mode 1)
@@ -50,49 +28,17 @@
 ;; Show column-number in the mode line
 (column-number-mode 1)
 
-;; ========== Set the fill column ==========
-
 ;; Enable backup files.
 (setq-default fill-column 72)
 
-;; ===== Turn on Auto Fill mode automatically in all modes =====
-
-;; Auto-fill-mode the the automatic wrapping of lines and insertion of
-;; newlines when the cursor goes over the column limit.
-
-;; This should actually turn on auto-fill-mode by default in all major
-;; modes. The other way to do this is to turn on the fill for specific modes
-;; via hooks.
-
+;; automatically wrap lines
 (setq auto-fill-mode 1)
 
-;; ===== Make Text mode the default mode for new buffers =====
-
+;; text mode is default for new buffers
 (setq default-major-mode 'text)
 
-;; Set cursor and mouse-pointer colours
-(set-cursor-color "red")
-(set-mouse-color "goldenrod")
-
-;; Set region background colour
-(set-face-background 'region "blue")
-
-;; Set emacs background colour
-(set-background-color "black")
-
-
-;; Disable the menu bar
+;; Disable the menu bar (for gui only)
 (menu-bar-mode -1)
-
-(global-set-key (kbd "M-9") 'kill-whole-line)
-
-;; ag options
-(setq ag-highlight-search t)
-(setq ag-reuse-window 't)
-(setq ag-reuse-buffers 't)
-
-;; ace-window
-(global-set-key (kbd "M-p") 'ace-window)
 
 ;; temp/backup files
 (setq backup-directory-alist
@@ -102,17 +48,45 @@
 
 (setq backup-directory-alist `(("." . "~/.saves")))
 
-;; magit settings
-(global-set-key (kbd "C-x g") 'magit-status)
-
 (set-face-attribute 'region nil :background "#666") ;; set highlight colour
+
+;;
+;; PLUGIN OPTIONS
+;;
+
+;; ag options
+(setq ag-highlight-search t)
+(setq ag-reuse-window 't)
+(setq ag-reuse-buffers 't)
+
+;; projectile options
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+
+;;
+;; GLOBAL KEY BINDINGS
+;;
 
 (defun end-of-line-and-indented-new-line ()
   (interactive)
   (end-of-line)
   (newline-and-indent))
 
+;; Equivalent of 'o' in Vim
 (global-set-key (kbd "M-0") 'end-of-line-and-indented-new-line)
+
+(global-set-key [(control h)] 'delete-backward-char)
+
+(global-set-key (kbd "M-9") 'kill-whole-line)
+
+(global-set-key (kbd "M-p") 'ace-window)
+
+(global-set-key (kbd "C-x g") 'magit-status)
+
+;;
+;; AUTO-GENERATED SETTINGS (For Customize)
+;;
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
