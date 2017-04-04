@@ -10,8 +10,8 @@
 ;; Regular settings
 ;;
 
-;; Enable default auto-complete settings
-(ac-config-default)
+;; remove annoying bell sound
+(setq visible-bell 1)
 
 ;; indentation
 (setq standard-indent 4)
@@ -37,8 +37,15 @@
 ;; text mode is default for new buffers
 (setq default-major-mode 'text)
 
-;; Disable the menu bar (for gui only)
+;; GUI Options
 (menu-bar-mode -1)
+(toggle-scroll-bar -1)
+(tool-bar-mode -1)
+
+(fringe-mode 0)
+
+;; PDF viewing options
+(setq doc-view-continuous t)
 
 ;; temp/backup files
 (setq backup-directory-alist
@@ -50,19 +57,49 @@
 
 (set-face-attribute 'region nil :background "#666") ;; set highlight colour
 
+(set-frame-font "Hack 12")
+
+(setq tab-always-indent 'complete)
+
 ;;
 ;; PLUGIN OPTIONS
 ;;
 
-;; ag options
+;; go-mode
+(require 'go-mode)
+(add-hook 'before-save-hook 'gofmt-before-save)
+(add-hook 'go-mode-hook '(lambda ()
+                           (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
+(add-hook 'go-mode-hook '(lambda ()
+                           (local-set-key (kbd "C-c C-g") 'go-goto-imports)))
+(add-hook 'go-mode-hook '(lambda ()
+                           (local-set-key (kbd "C-c C-f") 'gofmt)))
+(add-hook 'go-mode-hook '(lambda ()
+                           (local-set-key (kbd "C-c C-k") 'godoc)))
+
+(add-hook 'go-mode-hook 'company-mode)
+(add-hook 'go-mode-hook (lambda ()
+  (set (make-local-variable 'company-backends) '(company-go))
+  (company-mode)))
+
+;; autocomplete
+
+;; IDO mode
+(require 'ido)
+(ido-mode t)
+
+;; auto complete (TODO)
+
+;; Correct path needed for pdflatex
+(exec-path-from-shell-initialize)
+
+;; Ag options
 (setq ag-highlight-search t)
 (setq ag-reuse-window 't)
 (setq ag-reuse-buffers 't)
 
 ;; projectile options
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
+(projectile-global-mode +1)
 
 ;;
 ;; GLOBAL KEY BINDINGS
@@ -78,11 +115,16 @@
 
 (global-set-key [(control h)] 'delete-backward-char)
 
+
 (global-set-key (kbd "M-9") 'kill-whole-line)
 
 (global-set-key (kbd "M-p") 'ace-window)
 
 (global-set-key (kbd "C-x g") 'magit-status)
+
+;; Font size (GUI only)
+(define-key global-map (kbd "C-+") 'text-scale-increase)
+(define-key global-map (kbd "C--") 'text-scale-decrease)
 
 ;;
 ;; AUTO-GENERATED SETTINGS (For Customize)
@@ -100,10 +142,10 @@
  '(cua-normal-cursor-color "#839496")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
- '(custom-enabled-themes nil)
+ '(custom-enabled-themes (quote (base16-ocean)))
  '(custom-safe-themes
    (quote
-    ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" "38e64ea9b3a5e512ae9547063ee491c20bd717fe59d9c12219a0b1050b439cdd" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+    ("78c1c89192e172436dbf892bd90562bc89e2cc3811b5f9506226e735a953a9c6" "6de7c03d614033c0403657409313d5f01202361e35490a3404e33e46663c2596" "ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" "938d8c186c4cb9ec4a8d8bc159285e0d0f07bad46edf20aa469a89d0d2a586ea" "b571f92c9bfaf4a28cb64ae4b4cdbda95241cd62cf07d942be44dc8f46c491f4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" "38e64ea9b3a5e512ae9547063ee491c20bd717fe59d9c12219a0b1050b439cdd" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(fci-rule-color "#3C3D37")
  '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
  '(highlight-symbol-colors
@@ -134,7 +176,7 @@
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (helm-ag ace-window ag powerline magit cyberpunk-theme monokai-theme auto-complete helm projectile go-mode solarized-theme)))
+    (company base16-theme company-go exec-path-from-shell latex-preview-pane ample-theme molokai-theme helm-ag ace-window ag powerline magit cyberpunk-theme monokai-theme auto-complete helm projecftile go-mode solarized-theme)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
