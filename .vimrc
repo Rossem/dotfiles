@@ -1,36 +1,27 @@
-set shell=bash
-set nocompatible
-filetype off
+call plug#begin('~/.vim/plugged')
+Plug 'nanotech/jellybeans.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'fatih/vim-go'
+Plug 'rust-lang/rust.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tomasr/molokai'
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-"let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+let g:deoplete#enable_at_startup = 1
+let g:go_fmt_command = "goimports"
 
-Plugin 'tpope/vim-fugitive'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Lokaltog/vim-powerline'
-Plugin 'tpope/vim-endwise'
-" Plugin 'kien/ctrlp.vim'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+call plug#end()
 
-Plugin 'altercation/vim-colors-solarized'
-
-call vundle#end() 
 filetype plugin indent on
 
-runtime macros/matchit.vim " match ruby ends with %
-
-syntax on
-
-set encoding=utf-8 "UNICODE GLYPHS
+let g:rustfmt_autosave = 1
 
 set noswapfile
 set nobackup 
 set nowb
 
+" set rnu
 set number
 set clipboard=unnamed
 set showcmd
@@ -40,14 +31,12 @@ set autoread
 set backspace=2
 set pastetoggle=<F2>
 
-" Performance
-
 " Indentation
-set laststatus=2 "for powerline
 set expandtab
+set laststatus=2
 set smarttab
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 set autoindent
 set backspace=indent,eol,start
 
@@ -57,21 +46,26 @@ set incsearch
 set ignorecase
 set smartcase
 
-" ctrl-p settings
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+" Quit when the only window open is NERDTree
+function! s:CloseIfOnlyControlWinLeft()
+  if winnr("$") != 1
+    return
+  endif
+  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+        \ || &buftype == 'quickfix'
+    q
+  endif
+endfunction
+augroup CloseIfOnlyControlWinLeft
+  au!
+  au BufEnter * call s:CloseIfOnlyControlWinLeft()
+augroup END
 
 " Colorscheme
 syntax on
-set background=dark
-set t_Co=256
-colorscheme solarized
-
-" GUI Options
-set guioptions+=LlRrbT
-set guioptions-=LlRrbT
-set guifont=Monaco:h12
+colo molokai
 
 " Leader mappings
 let mapleader = " "
@@ -79,4 +73,10 @@ let mapleader = " "
 nnoremap <leader>w <C-w>w
 nnoremap <leader>p :tabp<CR>
 nnoremap <leader>n :tabn<CR>
-nnoremap <leader>f :FZF<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>t :Tags<CR>
+nnoremap <leader>h :noh<CR>
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
