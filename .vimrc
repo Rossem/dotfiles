@@ -7,6 +7,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tomasr/molokai'
+Plug 'vim-airline/vim-airline'
 
 let g:deoplete#enable_at_startup = 1
 let g:go_fmt_command = "goimports"
@@ -48,21 +49,6 @@ set smartcase
 
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
-" Quit when the only window open is NERDTree
-function! s:CloseIfOnlyControlWinLeft()
-  if winnr("$") != 1
-    return
-  endif
-  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
-        \ || &buftype == 'quickfix'
-    q
-  endif
-endfunction
-augroup CloseIfOnlyControlWinLeft
-  au!
-  au BufEnter * call s:CloseIfOnlyControlWinLeft()
-augroup END
-
 " Colorscheme
 syntax on
 colo molokai
@@ -77,6 +63,7 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>t :Tags<CR>
 nnoremap <leader>h :noh<CR>
+nnoremap <leader>e :e<CR>
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
