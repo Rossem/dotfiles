@@ -1,0 +1,7 @@
+{
+    "editor.wordBasedSuggestions": false,
+    "workbench.colorTheme": "Solarized Dark",
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "workbench.editor.enablePreviewFromQuickOpen": false
+}
