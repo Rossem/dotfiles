@@ -1,7 +1,130 @@
 {
-    "editor.wordBasedSuggestions": false,
-    "workbench.colorTheme": "Solarized Dark",
-    "vim.useSystemClipboard": true,
-    "vim.hlsearch": true,
-    "workbench.editor.enablePreviewFromQuickOpen": false
+  "editor.tabSize": 2,
+  "files.trimTrailingWhitespace": true,
+  "editor.formatOnType": true,
+  // "editor.minimap.enabled": false,
+  "files.autoSave": "onFocusChange",
+  "editor.fontFamily": "Menlo",
+  // "workbench.editor.showTabs": false,
+  // "workbench.editor.enablePreviewFromQuickOpen": false,
+  "window.title": "${activeEditorMedium}${separator}${rootName}",
+  "workbench.colorTheme": "dark+(elixir)",
+  "workbench.editor.tabSizing": "shrink",
+  "editor.scrollBeyondLastLine": false,
+  "editor.fontSize": 13,
+  "editor.renderWhitespace": "selection",
+  "window.zoomLevel": 0,
+  "editor.cursorBlinking": "solid",
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.quickOpen.closeOnFocusLost": false,
+  "workbench.quickOpen.preserveInput": true,
+
+  // Vim
+  "vim.leader": " ",
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.debug.silent": true,
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.cursorStylePerMode.insert": "block",
+  "vim.useSystemClipboard": true,
+  "vim.easymotion": true,
+  "vim.easymotionMarkerBackgroundColor": "red",
+
+  // Leader bindings
+  "vim.normalModeKeyBindings": [
+    // Editor navigation
+    {
+      "before": ["<leader>", "n"],
+      "commands": ["workbench.action.nextEditorInGroup"]
+    },
+    {
+      "before": ["<leader>", "p"],
+      "commands": ["workbench.action.previousEditorInGroup"]
+    },
+    {
+      "before": ["<leader>", "w", "h"],
+      "commands": ["workbench.action.navigateLeft"]
+    },
+    {
+      "before": ["<leader>", "w", "j"],
+      "commands": ["workbench.action.navigateDown"]
+    },
+    {
+      "before": ["<leader>", "w", "k"],
+      "commands": ["workbench.action.navigateUp"]
+    },
+    {
+      "before": ["<leader>", "w", "l"],
+      "commands": ["workbench.action.navigateRight"]
+    },
+
+    // Jumping
+    {
+      "before": ["<leader>", "i"],
+      "commands": ["extension.vim_ctrl+i"]
+    },
+    {
+      "before": ["<leader>", "o"],
+      "commands": ["extension.vim_ctrl+o"]
+    },
+
+    // Editor manipulation
+    {
+      "before": ["<leader>", "\\"],
+      "commands": ["workbench.action.splitEditor"]
+    },
+    {
+      "before": ["<leader>", "-"],
+      "commands": ["workbench.action.splitEditorOrthogonal"]
+    },
+    {
+      "before": ["<leader>", "t", "c"],
+      "commands": ["workbench.action.closeEditorsInGroup"]
+    },
+    {
+      "before": ["<leader>", "t", "q"],
+      "commands": ["workbench.action.closeAllEditors"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+
+    {
+      "before": ["<leader>", "h"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "b"],
+      "commands": ["workbench.action.quickOpenRecent"]
+    },
+    {
+      "before": ["<leader>", "s"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    }
+    // {
+    //   "before": ["K"],
+    //   "after": ["leader", "leader", "k"]
+    // },
+    // {
+    //   "before": ["J"],
+    //   "after": ["leader", "leader", "j"]
+    // },
+    // {
+    //   "before": ["<leader>", "i"],
+    //   "after": ["y", "i", "\""]
+    // },
+    // {
+    //   "before": ["Y"],
+    //   "after": ["y", "$"]
+    // }
+  ],
 }
