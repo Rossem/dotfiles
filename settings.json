@@ -2,23 +2,21 @@
   "editor.tabSize": 2,
   "files.trimTrailingWhitespace": true,
   "editor.formatOnType": true,
+  "editor.selectionHighlight": false,
   // "editor.minimap.enabled": false,
   "files.autoSave": "onFocusChange",
-  "editor.fontFamily": "Menlo",
-  // "workbench.editor.showTabs": false,
+  "editor.fontSize": 13,
+  "editor.fontFamily": "Source Code Pro, Menlo, Monaco, 'Courier New', monospace",
   // "workbench.editor.enablePreviewFromQuickOpen": false,
   "window.title": "${activeEditorMedium}${separator}${rootName}",
-  "workbench.colorTheme": "dark+(elixir)",
   "workbench.editor.tabSizing": "shrink",
   "editor.scrollBeyondLastLine": false,
-  "editor.fontSize": 13,
   "editor.renderWhitespace": "selection",
   "window.zoomLevel": 0,
   "editor.cursorBlinking": "solid",
-  "workbench.editor.enablePreviewFromQuickOpen": false,
+  // "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.quickOpen.closeOnFocusLost": false,
   "workbench.quickOpen.preserveInput": true,
-
   // Vim
   "vim.leader": " ",
   "vim.useCtrlKeys": true,
@@ -29,87 +27,219 @@
   "vim.useSystemClipboard": true,
   "vim.easymotion": true,
   "vim.easymotionMarkerBackgroundColor": "red",
-
   // Leader bindings
   "vim.normalModeKeyBindings": [
     // Editor navigation
     {
-      "before": ["<leader>", "n"],
-      "commands": ["workbench.action.nextEditorInGroup"]
+      "before": [
+        "<leader>",
+        "n"
+      ],
+      "commands": [
+        "workbench.action.nextEditorInGroup"
+      ]
     },
     {
-      "before": ["<leader>", "p"],
-      "commands": ["workbench.action.previousEditorInGroup"]
+      "before": [
+        "<leader>",
+        "p"
+      ],
+      "commands": [
+        "workbench.action.previousEditorInGroup"
+      ]
     },
     {
-      "before": ["<leader>", "w", "h"],
-      "commands": ["workbench.action.navigateLeft"]
+      "before": [
+        "<leader>",
+        "w",
+        "h"
+      ],
+      "commands": [
+        "workbench.action.navigateLeft"
+      ]
     },
     {
-      "before": ["<leader>", "w", "j"],
-      "commands": ["workbench.action.navigateDown"]
+      "before": [
+        "<leader>",
+        "w",
+        "j"
+      ],
+      "commands": [
+        "workbench.action.navigateDown"
+      ]
     },
     {
-      "before": ["<leader>", "w", "k"],
-      "commands": ["workbench.action.navigateUp"]
+      "before": [
+        "<leader>",
+        "w",
+        "k"
+      ],
+      "commands": [
+        "workbench.action.navigateUp"
+      ]
     },
     {
-      "before": ["<leader>", "w", "l"],
-      "commands": ["workbench.action.navigateRight"]
+      "before": [
+        "<leader>",
+        "w",
+        "l"
+      ],
+      "commands": [
+        "workbench.action.navigateRight"
+      ]
     },
-
     // Jumping
     {
-      "before": ["<leader>", "i"],
-      "commands": ["extension.vim_ctrl+i"]
+      "before": [
+        "<leader>",
+        "i"
+      ],
+      "commands": [
+        "extension.vim_ctrl+i"
+      ]
     },
     {
-      "before": ["<leader>", "o"],
-      "commands": ["extension.vim_ctrl+o"]
+      "before": [
+        "<leader>",
+        "o"
+      ],
+      "commands": [
+        "extension.vim_ctrl+o"
+      ]
     },
-
     // Editor manipulation
     {
-      "before": ["<leader>", "\\"],
-      "commands": ["workbench.action.splitEditor"]
+      "before": [
+        "<leader>",
+        "\\"
+      ],
+      "commands": [
+        "workbench.action.newGroupLeft"
+      ]
     },
     {
-      "before": ["<leader>", "-"],
-      "commands": ["workbench.action.splitEditorOrthogonal"]
+      "before": [
+        "<leader>",
+        "-"
+      ],
+      "commands": [
+        "workbench.action.newGroupBelow"
+      ]
     },
     {
-      "before": ["<leader>", "t", "c"],
-      "commands": ["workbench.action.closeEditorsInGroup"]
+      "before": [
+        "<leader>",
+        "t",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.closeEditorsInGroup"
+      ]
     },
     {
-      "before": ["<leader>", "t", "q"],
-      "commands": ["workbench.action.closeAllEditors"]
+      "before": [
+        "<leader>",
+        "t",
+        "q"
+      ],
+      "commands": [
+        "workbench.action.closeAllEditors"
+      ]
     },
     {
-      "before": ["<leader>", "q"],
-      "commands": ["workbench.action.closeActiveEditor"]
-    },
-
-    {
-      "before": ["<leader>", "h"],
-      "commands": [":nohl"]
-    },
-    {
-      "before": ["<leader>", "f"],
-      "commands": ["workbench.action.quickOpen"]
+      "before": [
+        "<leader>",
+        "q"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
     },
     {
-      "before": ["<leader>", "b"],
-      "commands": ["workbench.action.quickOpenRecent"]
+      "before": [
+        "<leader>",
+        "h"
+      ],
+      "commands": [
+        ":nohl"
+      ]
     },
     {
-      "before": ["<leader>", "s"],
-      "commands": ["workbench.action.files.save"]
+      "before": [
+        "<leader>",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
+    },
+    // {
+    //   "before": ["<leader>", "b"],
+    //   "commands": ["workbench.action.quickOpenRecent"]
+    // },
+    {
+      "before": [
+        "<leader>",
+        "s"
+      ],
+      "commands": [
+        "workbench.action.files.save"
+      ]
     },
     {
-      "before": ["<leader>", "d"],
-      "commands": ["editor.action.revealDefinition"]
-    }
+      "before": [
+        "<leader>",
+        "b"
+      ],
+      "commands": [
+        "breadcrumbs.focusAndSelect"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        ","
+      ],
+      "commands": [
+        // "workbench.action.openSettingsJson"
+        "fuzzySearch.activeTextEditor"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "."
+      ],
+      "commands": [
+        "workbench.action.toggleSidebarVisibility"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "e"
+      ],
+      "commands": [
+        "workbench.action.keepEditor"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "commands": [
+        "editor.action.revealDefinition"
+      ]
+    },
+    {
+      "before": [
+        "@",
+      ],
+      "commands": [
+        "cursorHome",
+      ]
+    },
     // {
     //   "before": ["K"],
     //   "after": ["leader", "leader", "k"]
@@ -127,4 +257,28 @@
     //   "after": ["y", "$"]
     // }
   ],
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
+  // "workbench.editor.enablePreview": false,
+  // Elixir
+  "elixirLS.dialyzerEnabled": false,
+  "[elixir]": {
+    "editor.defaultFormatter": "JakeBecker.elixir-ls"
+  },
+  "editor.formatOnSave": true,
+  "workbench.panel.defaultLocation": "right",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.macOptionIsMeta": true,
+  "explorer.sortOrder": "modified",
+  "editor.tabCompletion": "on",
+  "editor.acceptSuggestionOnEnter": "off",
+  "workbench.colorTheme": "Atom One Dark",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#1a1a1a",
+    "statusBar.noFolderBackground": "#212121",
+    "statusBar.debuggingBackground": "#263238",
+    "statusBar.foreground": "#bbbbbb"
+  },
 }
