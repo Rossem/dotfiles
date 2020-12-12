@@ -6,7 +6,6 @@
   // "editor.minimap.enabled": false,
   "files.autoSave": "onFocusChange",
   "editor.fontSize": 13,
-  "editor.fontFamily": "Source Code Pro, Menlo, Monaco, 'Courier New', monospace",
   // "workbench.editor.enablePreviewFromQuickOpen": false,
   "window.title": "${activeEditorMedium}${separator}${rootName}",
   "workbench.editor.tabSizing": "shrink",
@@ -23,7 +22,7 @@
   "vim.hlsearch": true,
   "vim.debug.silent": true,
   "vim.cursorStylePerMode.normal": "block",
-  "vim.cursorStylePerMode.insert": "block",
+  "vim.cursorStylePerMode.insert": "line",
   "vim.useSystemClipboard": true,
   "vim.easymotion": true,
   "vim.easymotionMarkerBackgroundColor": "red",
@@ -268,17 +267,25 @@
     "editor.defaultFormatter": "JakeBecker.elixir-ls"
   },
   "editor.formatOnSave": true,
-  "workbench.panel.defaultLocation": "right",
   "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.macOptionIsMeta": true,
-  "explorer.sortOrder": "modified",
   "editor.tabCompletion": "on",
   "editor.acceptSuggestionOnEnter": "off",
-  "workbench.colorTheme": "Atom One Dark",
-  "workbench.colorCustomizations": {
-    "statusBar.background": "#1a1a1a",
-    "statusBar.noFolderBackground": "#212121",
-    "statusBar.debuggingBackground": "#263238",
-    "statusBar.foreground": "#bbbbbb"
-  },
+  // "workbench.colorCustomizations": {
+  //   "statusBar.background": "#1a1a1a",
+  //   "statusBar.noFolderBackground": "#212121",
+  //   "statusBar.debuggingBackground": "#263238",
+  //   "statusBar.foreground": "#bbbbbb"
+  // },
+  "elixirLS.suggestSpecs": false,
+  "workbench.colorTheme": "One Dark Pro",
+  "editor.renderIndentGuides": false,
+  "vscode-neovim.neovimInitPath": " ~/.config/nvim/init.vim",
+  "vscode-neovim.neovimPath": "/usr/local/bin/nvim",
+  "tabnine.experimentalAutoImports": true,
+  "elixirLS.fetchDeps": false,
+  // Disable auto updates to ElixirLS doesn't get updated to the marketplace
+  // version.
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false,
 }
